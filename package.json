@@ -1,0 +1,21 @@
+{
+  "name": "swf-version",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Shockwave Flash Player version utility",
+  "author": "Andreas Svensson <andreas@syranide.com>",
+  "homepage": "https://github.com/syranide/swf-version",
+  "bugs": "https://github.com/syranide/swf-version/issues",
+  "main": "swf-version.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syranide/swf-version"
+  },
+  "keywords": [
+    "swf",
+    "shockwave",
+    "flash",
+    "player",
+    "version"
+  ]
+}
