@@ -1,11 +1,11 @@
-## SWFVersion ![](https://img.shields.io/github/release/syranide/swf-version.svg) ![](https://img.shields.io/badge/npm-swf--version-blue.svg) ![](https://img.shields.io/badge/bower-swf--version-blue.svg)
+## SWFPlayerVersion ![](https://img.shields.io/github/release/syranide/swf-player-version.svg) ![](https://img.shields.io/badge/npm-swf--player--version-blue.svg) ![](https://img.shields.io/badge/bower-swf--player--version-blue.svg)
 
 Shockwave Flash Player version utility. GCC `ADVANCED` optimizations compatible.
 
 ```js
 // Test if SWF Player version is supported and output the actual version.
-if (SWFVersion.isSupported('10.0')) {
-  alert('SWF Player ' + SWFVersion.get() + ' is installed');
+if (SWFPlayerVersion.isSupported('10.0')) {
+  alert('SWF Player ' + SWFPlayerVersion.get() + ' is installed');
 }
 ```
 

@@ -1,4 +1,4 @@
-/*! swf-version v1.0.0 | @syranide | MIT license */
+/*! swf-player-version v1.0.0 | @syranide | MIT license */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -6,7 +6,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory();
   } else {
-    root.SWFVersion = factory();
+    root.SWFPlayerVersion = factory();
   }
 }(this, function() {
   'use strict';
@@ -99,10 +99,10 @@
     return true;
   }
 
-  var SWFVersion = {
+  var SWFPlayerVersion = {
     get: getVersion,
     isSupported: isVersionSupported
   };
 
-  return SWFVersion;
+  return SWFPlayerVersion;
 }));

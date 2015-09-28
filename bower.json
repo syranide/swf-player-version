@@ -1,15 +1,15 @@
 {
-  "name": "swf-version",
+  "name": "swf-player-version",
   "version": "1.0.0",
   "license": "MIT",
   "description": "Shockwave Flash Player version utility",
   "authors": ["Andreas Svensson <andreas@syranide.com>"],
-  "homepage": "https://github.com/syranide/swf-version",
-  "bugs": "https://github.com/syranide/swf-version/issues",
-  "main": "swf-version.js",
+  "homepage": "https://github.com/syranide/swf-player-version",
+  "bugs": "https://github.com/syranide/swf-player-version/issues",
+  "main": "swf-player-version.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/syranide/swf-version"
+    "url": "https://github.com/syranide/swf-player-version"
   },
   "keywords": [
     "swf",
@@ -19,6 +19,6 @@
     "version"
   ],
   "ignore": [
-    "npm-react-swf/"
+    "npm-swf-player-version/"
   ]
 }

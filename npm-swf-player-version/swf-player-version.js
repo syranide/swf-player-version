@@ -1,4 +1,4 @@
-/*! swf-version v1.0.0 | @syranide | MIT license */
+/*! swf-player-version v1.0.0 | @syranide | MIT license */
 
 'use strict';
 
@@ -90,9 +90,9 @@ function isVersionSupported(requiredString) {
   return true;
 }
 
-var SWFVersion = {
+var SWFPlayerVersion = {
   get: getVersion,
   isSupported: isVersionSupported
 };
 
-module.exports = SWFVersion;
+module.exports = SWFPlayerVersion;
