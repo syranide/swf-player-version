@@ -1,6 +1,6 @@
 {
   "name": "swf-player-version",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Shockwave Flash Player version utility",
   "authors": ["Andreas Svensson <andreas@syranide.com>"],

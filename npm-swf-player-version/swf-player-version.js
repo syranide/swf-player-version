@@ -1,4 +1,4 @@
-/*! swf-player-version v1.0.0 | @syranide | MIT license */
+/*! swf-player-version v1.0.1 | @syranide | MIT license */
 
 'use strict';
 
