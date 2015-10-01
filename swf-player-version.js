@@ -1,4 +1,4 @@
-/*! swf-player-version v1.0.1 | @syranide | MIT license */
+/*! swf-player-version v1.1.0 | @syranide | MIT license */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -13,45 +13,41 @@
 
   var detectedVersion;
 
+  function parseVersion(description) {
+    return description.match(/\d+/g).slice(0, 3).join('.');
+  }
+
   function detectAvailableVersion() {
-    if (typeof navigator !== 'undefined') {
-      var navSWFPlugin = (
-        navigator.plugins &&
-        navigator.plugins['Shockwave Flash']
-      );
+    if (typeof navigator === 'object') {
+      if (navigator.mimeTypes) {
+        var mimeType = navigator.mimeTypes['application/x-shockwave-flash'];
 
-      if (navSWFPlugin) {
-        var navSWFMimeType = (
-          navigator.mimeTypes &&
-          navigator.mimeTypes['application/x-shockwave-flash']
-        );
+        if (mimeType) {
+          var plugin = mimeType.enabledPlugin;
 
-        if (navSWFMimeType && navSWFMimeType.enabledPlugin) {
-          try {
-            return detectedVersion = (
-              navSWFPlugin
-                .description
-                .match(/(\d+)\.(\d+) r(\d+)/)
-                .slice(1)
-                .join('.')
-            );
-          } catch (e) {
+          if (plugin) {
+            // Expected format "Shockwave Flash #.# r#", "Shockwave Flash #.# d#"
+            detectedVersion = parseVersion(plugin.description);
+            return;
           }
         }
       }
     }
 
-    // ActiveXObject-fallback for IE<11
-    if (typeof ActiveXObject !== 'undefined') {
+    // ActiveXObject for IE<11
+    if (typeof ActiveXObject === 'function') {
+      var instance;
+
       try {
-        return detectedVersion = (
-          new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
-            .GetVariable('$version')
-            .match(/(\d+),(\d+),(\d+)/)
-            .slice(1)
-            .join('.')
-        );
+        // Throws "Automation server can't create object" if unavailable
+        instance = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
       } catch (e) {
+      }
+
+      if (instance) {
+        // Expected format "WIN #,#,#,#"
+        detectedVersion = parseVersion(instance.GetVariable('$version'));
+        return;
       }
     }
 
@@ -88,11 +84,11 @@
     var requiredFields = requiredString.split('.');
 
     for (var i = 0; i < 3; i++) {
-      var availableNumber = +availableFields[i];
-      var requiredNumber = +(requiredFields[i] || 0);
+      var availableField = availableFields[i];
+      var requiredField = requiredFields[i] || '0';
 
-      if (availableNumber !== requiredNumber) {
-        return availableNumber > requiredNumber;
+      if (availableField !== requiredField) {
+        return +availableField > +requiredField;
       }
     }
 
