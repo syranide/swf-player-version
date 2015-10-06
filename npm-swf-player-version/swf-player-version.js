@@ -1,4 +1,4 @@
-/*! swf-player-version v1.1.0 | @syranide | MIT license */
+/*! swf-player-version v1.1.1 | @syranide | MIT license */
 
 'use strict';
 
@@ -48,7 +48,7 @@ function detectAvailableVersion() {
 /**
  * Get available SWF Player version. Result is cached.
  *
- * @return {?string} 'X.Y.Z' or null.
+ * @return {?string} '#.#.#' or null.
  */
 function getVersion() {
   if (detectedVersion === undefined) {
@@ -61,7 +61,7 @@ function getVersion() {
 /**
  * Determine if available SWF Player meets version requirement.
  *
- * @param {string} requiredString 'X.Y.Z', 'X.Y' or 'X'.
+ * @param {string} requiredString '#.#.#', '#.#', '#' or ''.
  * @return {boolean} true if supported.
  */
 function isVersionSupported(requiredString) {
@@ -74,9 +74,9 @@ function isVersionSupported(requiredString) {
   var availableFields = availableString.split('.');
   var requiredFields = requiredString.split('.');
 
-  for (var i = 0; i < 3; i++) {
-    var availableField = availableFields[i];
-    var requiredField = requiredFields[i] || '0';
+  for (var i = 0; i < requiredFields.length; i++) {
+    var availableField = availableFields[i] || '0';
+    var requiredField = requiredFields[i];
 
     if (availableField !== requiredField) {
       return +availableField > +requiredField;

@@ -13,13 +13,13 @@ if (SWFPlayerVersion.isSupported('10.0')) {
 
 ```
 get()
-  returns {?string} 'X.Y.Z' or null.
+  returns {?string} '#.#.#' or null.
 
   Get available SWF Player version. Result is cached.
 ```
 ```
 isSupported(requiredString)
-  requiredString {string} 'X.Y.Z', 'X.Y' or 'X'.
+  requiredString {string} '#.#.#', '#.#', '#' or ''.
   returns {boolean} true if supported.
 
   Determine if available SWF Player meets version requirement.
