@@ -1,4 +1,4 @@
-/*! swf-player-version v1.1.1 | @syranide | MIT license */
+/*! swf-player-version v1.1.2 | @syranide | MIT license */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -36,17 +36,19 @@
 
     // ActiveXObject for IE<11
     if (typeof ActiveXObject === 'function') {
-      var instance;
+      var description;
 
       try {
         // Throws "Automation server can't create object" if unavailable
-        instance = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+        var instance = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+        // Can throw "Out of memory"
+        description = instance.GetVariable('$version');
       } catch (e) {
       }
 
-      if (instance) {
+      if (description) {
         // Expected format "WIN #,#,#,#"
-        detectedVersion = parseVersion(instance.GetVariable('$version'));
+        detectedVersion = parseVersion(description);
         return;
       }
     }
