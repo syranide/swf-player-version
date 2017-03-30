@@ -1,4 +1,4 @@
-/*! swf-player-version v1.1.4 | @syranide | MIT license */
+/*! swf-player-version v1.1.5 | @syranide | MIT license */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -14,10 +14,6 @@
   var detectedVersion;
 
   function parseVersion(description) {
-    if (typeof description !== 'string') {
-      return '0.0.0';
-    }
-
     var match = description.match(/\d+/g);
     if (match != null) {
       return match.slice(0, 3).join('.');
@@ -28,17 +24,15 @@
 
   function detectAvailableVersion() {
     if (typeof navigator === 'object') {
-      if (navigator.mimeTypes) {
+      if (navigator.plugins && navigator.mimeTypes) {
+        var plugin = navigator.plugins['Shockwave Flash'];
         var mimeType = navigator.mimeTypes['application/x-shockwave-flash'];
 
-        if (mimeType) {
-          var plugin = mimeType.enabledPlugin;
-
-          if (plugin) {
-            // Expected format "Shockwave Flash #.# r#", "Shockwave Flash #.# d#"
-            detectedVersion = parseVersion(plugin.description);
-            return;
-          }
+        // FF51 mimeType.enabledPlugin does not return a valid plugin
+        if (plugin && mimeType && mimeType.enabledPlugin) {
+          // Expected format "Shockwave Flash #.# r#", "Shockwave Flash #.# d#"
+          detectedVersion = parseVersion(plugin.description);
+          return;
         }
       }
     }
