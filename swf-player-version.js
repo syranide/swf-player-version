@@ -1,4 +1,4 @@
-/*! swf-player-version v1.1.3 | @syranide | MIT license */
+/*! swf-player-version v1.1.4 | @syranide | MIT license */
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -14,6 +14,10 @@
   var detectedVersion;
 
   function parseVersion(description) {
+    if (typeof description !== 'string') {
+      return '0.0.0';
+    }
+
     var match = description.match(/\d+/g);
     if (match != null) {
       return match.slice(0, 3).join('.');
